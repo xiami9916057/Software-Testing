@@ -1,0 +1,46 @@
+        -:    0:Source:../hw2-1-C0/triangle.cc
+        -:    0:Graph:triangle.gcno
+        -:    0:Data:triangle.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:
+        -:    2:#include "triangle.h"
+        -:    3:
+        -:    4:
+       79:    5:string Triangle(int a,int b,int c){
+        -:    6:	
+       79:    7:	string str1("Isosceles");
+      158:    8:	string str2("Equilateral");
+      158:    9:	string str3("Not a Triangle");
+      158:   10:	string str4("Scalene");
+        -:   11:	
+      158:   12:	string err[3] = {"Side a is invalid.","Side b is invalid.","Side c is invalid."};
+      158:   13:	string err_msg("");
+        -:   14:
+       79:   15:	int side[3] = {a,b,c};
+       79:   16:	bool IsInvalid = false;
+        -:   17:	
+      316:   18:	for (int i=0 ; i<3 ; i++){
+      237:   19:		if(side[i]<=0 || side[i]>200){
+       33:   20:			IsInvalid = true;
+       33:   21:			err_msg = err_msg + err[i];
+        -:   22:		}
+        -:   23:	}
+       79:   24:	if (IsInvalid) return err_msg;
+        -:   25:	
+       56:   26:	if ((a < b+c) && (b < a+c) && (c < a+b)){
+       28:   27:		if((a==b) && (b==c)){
+        7:   28:			return str2;
+       21:   29:		}else if((a!=b) && (a!=c) && (b!=c)) {
+        3:   30:			return str4;
+        -:   31:		}else {
+       18:   32:			return str1;
+        -:   33:		}
+        -:   34:	}else {
+       28:   35:		return str3;
+       79:   36:	}
+        -:   37:	
+        -:   38:}
+        -:   39:
+        -:   40:
+        -:   41:

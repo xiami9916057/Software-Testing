@@ -1,0 +1,177 @@
+        -:    0:Source:../hw2-1-C1/triangle.cc
+        -:    0:Graph:triangle.gcno
+        -:    0:Data:triangle.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:
+        -:    2:#include "triangle.h"
+        -:    3:
+        -:    4:
+function _Z8Triangleiii called 79 returned 100% blocks executed 63%
+       79:    5:string Triangle(int a,int b,int c){
+        -:    6:	
+       79:    7:	string str1("Isosceles");
+call    0 returned 100%
+call    1 returned 100%
+branch  2 taken 100% (fallthrough)
+branch  3 taken 0% (throw)
+call    4 returned 100%
+call    5 never executed
+      158:    8:	string str2("Equilateral");
+call    0 returned 100%
+call    1 returned 100%
+branch  2 taken 100% (fallthrough)
+branch  3 taken 0% (throw)
+call    4 returned 100%
+call    5 returned 100%
+branch  6 taken 100% (fallthrough)
+branch  7 taken 0% (throw)
+call    8 never executed
+call    9 never executed
+      158:    9:	string str3("Not a Triangle");
+call    0 returned 100%
+call    1 returned 100%
+branch  2 taken 100% (fallthrough)
+branch  3 taken 0% (throw)
+call    4 returned 100%
+call    5 returned 100%
+branch  6 taken 100% (fallthrough)
+branch  7 taken 0% (throw)
+call    8 never executed
+call    9 never executed
+      158:   10:	string str4("Scalene");
+call    0 returned 100%
+call    1 returned 100%
+branch  2 taken 100% (fallthrough)
+branch  3 taken 0% (throw)
+call    4 returned 100%
+call    5 returned 100%
+branch  6 taken 100% (fallthrough)
+branch  7 taken 0% (throw)
+call    8 never executed
+        -:   11:	
+      158:   12:	string err[3] = {"Side a is invalid.","Side b is invalid.","Side c is invalid."};
+call    0 returned 100%
+call    1 returned 100%
+branch  2 taken 100% (fallthrough)
+branch  3 taken 0% (throw)
+call    4 returned 100%
+call    5 returned 100%
+call    6 returned 100%
+branch  7 taken 100% (fallthrough)
+branch  8 taken 0% (throw)
+call    9 returned 100%
+call   10 returned 100%
+call   11 returned 100%
+branch 12 taken 100% (fallthrough)
+branch 13 taken 0% (throw)
+call   14 returned 100%
+branch 15 taken 75% (fallthrough)
+branch 16 taken 25%
+call   17 returned 100%
+branch 18 taken 100% (fallthrough)
+branch 19 taken 0% (throw)
+call   20 never executed
+call   21 never executed
+call   22 never executed
+branch 23 never executed
+branch 24 never executed
+branch 25 never executed
+branch 26 never executed
+call   27 never executed
+call   28 never executed
+branch 29 never executed
+branch 30 never executed
+call   31 never executed
+      158:   13:	string err_msg("");
+call    0 returned 100%
+call    1 returned 100%
+branch  2 taken 100% (fallthrough)
+branch  3 taken 0% (throw)
+call    4 returned 100%
+call    5 returned 100%
+branch  6 taken 100% (fallthrough)
+branch  7 taken 0% (throw)
+call    8 never executed
+        -:   14:
+       79:   15:	int side[3] = {a,b,c};
+       79:   16:	bool IsInvalid = false;
+        -:   17:	
+      316:   18:	for (int i=0 ; i<3 ; i++){
+branch  0 taken 75%
+branch  1 taken 25% (fallthrough)
+      237:   19:		if(side[i]<=0 || side[i]>200){
+branch  0 taken 90% (fallthrough)
+branch  1 taken 10%
+branch  2 taken 4% (fallthrough)
+branch  3 taken 96%
+       33:   20:			IsInvalid = true;
+       33:   21:			err_msg = err_msg + err[i];
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0% (throw)
+call    3 returned 100%
+branch  4 taken 100% (fallthrough)
+branch  5 taken 0% (throw)
+call    6 returned 100%
+branch  7 taken 100% (fallthrough)
+branch  8 taken 0% (throw)
+call    9 never executed
+        -:   22:		}
+        -:   23:	}
+       79:   24:	if (IsInvalid) return err_msg;
+branch  0 taken 29% (fallthrough)
+branch  1 taken 71%
+call    2 returned 100%
+branch  3 taken 100% (fallthrough)
+branch  4 taken 0% (throw)
+        -:   25:	
+       56:   26:	if ((a < b+c) && (b < a+c) && (c < a+b)){
+branch  0 taken 95% (fallthrough)
+branch  1 taken 5%
+branch  2 taken 77% (fallthrough)
+branch  3 taken 23%
+branch  4 taken 68% (fallthrough)
+branch  5 taken 32%
+       28:   27:		if((a==b) && (b==c)){
+branch  0 taken 46% (fallthrough)
+branch  1 taken 54%
+branch  2 taken 54% (fallthrough)
+branch  3 taken 46%
+        7:   28:			return str2;
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0% (throw)
+       21:   29:		}else if((a!=b) && (a!=c) && (b!=c)) {
+branch  0 taken 71% (fallthrough)
+branch  1 taken 29%
+branch  2 taken 73% (fallthrough)
+branch  3 taken 27%
+branch  4 taken 27% (fallthrough)
+branch  5 taken 73%
+        3:   30:			return str4;
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0% (throw)
+        -:   31:		}else {
+       18:   32:			return str1;
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0% (throw)
+        -:   33:		}
+        -:   34:	}else {
+       28:   35:		return str3;
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0% (throw)
+       79:   36:	}
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0% (throw)
+call    3 never executed
+call    4 never executed
+        -:   37:	
+        -:   38:}
+        -:   39:
+        -:   40:
+        -:   41:

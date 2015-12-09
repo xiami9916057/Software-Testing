@@ -63,9 +63,9 @@ TEST(NextDateTest, SimpleLoopCoverage){
 	
 	//If(month==2 && day==28 && year % 4 == 0)
 	//                     | 1 2 3 4 5 6 7 8                                    
-	//c5:month==2?         | T T T T F F F F     
-	//c6:day==28?          | T T F F T T F F
-	//c7:year%4==0?        | T F T F T F T F
+	//c8:month==2?         | T T T T F F F F     
+	//c9:day==28?          | T T F F T T F F
+	//c10:year%4==0?       | T F T F T F T F
 	
 	/* 01 */EXPECT_STREQ("2012.2.29",NextDate(2,28,2012).c_str());
 	/* 02 */EXPECT_STREQ("2010.3.1",NextDate(2,28,2010).c_str());

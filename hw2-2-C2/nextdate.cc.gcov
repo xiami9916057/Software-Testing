@@ -1,0 +1,134 @@
+        -:    0:Source:../hw2-2-C2/nextdate.cc
+        -:    0:Graph:nextdate.gcno
+        -:    0:Data:nextdate.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:
+        -:    2:#include "nextdate.h"
+        -:    3:
+        -:    4:#include <sstream>
+        -:    5:
+        -:    6:
+        -:    7:
+        2:    8:bool IsLeapYear(int year){
+        2:    9:  if(( (year%4)==0 && (year%100)!=0 )|| ((year%400) ==0)){
+        1:   10:    return true;
+        -:   11:  } else {
+        1:   12:    return false;
+        -:   13:  } 	
+        -:   14:	
+        -:   15:}
+        -:   16:
+        -:   17:
+        -:   18:
+       24:   19:string NextDate(int month,int day,int year){
+        -:   20:
+       24:   21:	int tomorrowDay=day,tomorrowMonth=month,tomorrowYear=year;
+        -:   22:
+       96:   23:	string err[3] = {"Month is out of range.","Day is out of range.","Year is out of range."};
+       48:   24:	string err_invalid("Invalid");
+       48:   25:	string err_msg("");
+        -:   26:	
+        -:   27:	
+       24:   28:	bool IsInvalid = false;
+        -:   29:	
+       24:   30:	bool c1= ((month>=1) && (month<=12));
+       24:   31:	bool c2= ((day>=1) && (day<=31));
+       24:   32:	bool c3= ((year>=1812) && (year<=2012));
+       24:   33:	bool cond[3] = {c1,c2,c3};
+        -:   34:	
+       96:   35:	for (int i=0 ; i<3 ; i++){
+       72:   36:		if(!cond[i]){
+    #####:   37:			IsInvalid = true;
+    #####:   38:			err_msg = err_msg + err[i];
+        -:   39:		}
+        -:   40:	}
+       24:   41:	if (IsInvalid) return err_msg;
+        -:   42:	
+       24:   43:	switch(month){
+        -:   44:		case 1:
+        -:   45:		case 3:
+        -:   46:		case 5:
+        -:   47:		case 7:
+        -:   48:		case 8:
+        -:   49:		case 10:
+        8:   50:			if(day < 31){
+        5:   51:				tomorrowDay = day + 1;
+        -:   52:			}else{
+        3:   53:				tomorrowDay = 1;
+        3:   54:				tomorrowMonth = month + 1;
+        -:   55:			}
+        8:   56:			break;
+        -:   57:		case 4:
+        -:   58:		case 6:
+        -:   59:		case 9:
+        -:   60:		case 11:
+        8:   61:			if(day < 30){
+        6:   62:				tomorrowDay = day + 1;
+        2:   63:			}else if(day == 30){
+        1:   64:				tomorrowDay = 1;
+        1:   65:				tomorrowMonth = month + 1;				
+        -:   66:			}else{
+        1:   67:				return err_invalid;
+        -:   68:			}
+        7:   69:			break;
+        -:   70:		case 12:
+        4:   71:			if(day < 31){
+        2:   72:				tomorrowDay = day + 1;
+        -:   73:			}else{
+        2:   74:				tomorrowDay = 1;
+        2:   75:				tomorrowMonth = 1;
+        2:   76:				if(year == 2012){
+        1:   77:					return err[2];
+        -:   78:				}else{
+        1:   79:					tomorrowYear = year + 1;
+        -:   80:				}
+        -:   81:			}
+        3:   82:			break;
+        -:   83:		case 2:
+        4:   84:			if(day < 28){
+        2:   85:				tomorrowDay = day + 1;
+        2:   86:			}else if(day == 28){
+        2:   87:				if(IsLeapYear(year)){
+        1:   88:					tomorrowDay = 29;
+        -:   89:				}else{
+        1:   90:					tomorrowDay = 1;
+        1:   91:					tomorrowMonth = 3;					
+        -:   92:				}
+    #####:   93:			}else if(day == 29){
+    #####:   94:				if(IsLeapYear(year)){
+    #####:   95:					tomorrowDay = 1;
+    #####:   96:					tomorrowMonth = 3;					
+        -:   97:				}else{
+    #####:   98:					return err_invalid;
+        -:   99:				}				
+        -:  100:			}else{
+    #####:  101:				return err_invalid;
+        -:  102:			}
+        4:  103:			break;
+        -:  104:		default:
+    #####:  105:			break;
+        -:  106:	}
+        -:  107:
+        -:  108:	
+       44:  109:	stringstream mm,dd,yy;
+       44:  110:	string m,d,y;
+        -:  111:	
+       22:  112:	mm<<tomorrowMonth;
+       22:  113:	dd<<tomorrowDay;
+       22:  114:	yy<<tomorrowYear;	
+        -:  115:	
+       22:  116:	mm>>m;
+       22:  117:	dd>>d;
+       22:  118:	yy>>y;
+        -:  119:	
+       44:  120:	string dot(".");
+       44:  121:	string tomorrowDate("");
+       22:  122:	tomorrowDate = y+dot+m+dot+d;
+        -:  123:	
+      140:  124:	return tomorrowDate;
+        -:  125:	
+        -:  126:}
+        -:  127:
+        -:  128:
+        -:  129:
